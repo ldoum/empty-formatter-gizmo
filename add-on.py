@@ -1,7 +1,16 @@
-import bpy
+bl_info = {
+    "name": "N formatter for empty",
+    "author": "Lancine Doumbia",
+    "version": (0, 0, 1), #bug fix, got rid of bpy.context global variable
+    "blender": (2, 8, 0),
+    "location": "View3D > Sidebar",
+    "description": "Appies display type and size to all selected empties.",
+    "warning": "",
+    "doc_url": "",
+    "category": "Empty",
+}
 
-C=bpy.context
-D=bpy.data
+import bpy
 
 class GroupOfProperties(bpy.types.PropertyGroup):
     PropertyName: bpy.props.EnumProperty(
@@ -35,7 +44,7 @@ class MyClassName(bpy.types.Operator):
         reference = context.scene.instance
 
         #collect all objects and filter for empties
-        all_empties = [empty for empty in C.selected_objects if empty.type == 'EMPTY']
+        all_empties = [empty for empty in context.selected_objects if empty.type == 'EMPTY']
 
         #check if empty is the exact type selected
         for e in all_empties:
