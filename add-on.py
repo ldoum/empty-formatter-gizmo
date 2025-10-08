@@ -55,7 +55,7 @@ class MyClassName(bpy.types.Operator):
             else:
                 print("Item named {} is an arrow already.".format(e.name))
             
-            #apply size in the meantime    
+            #apply size as well 
             e.empty_display_size = reference.Size
             print("Size of {} is now {}".format(e.name, reference.Size))
             
@@ -64,11 +64,12 @@ class MyClassName(bpy.types.Operator):
 
 class PanelClassName(bpy.types.Panel):
     bl_idname = "panelname"
-    bl_label = "Empty Formatter"
+    bl_label = "Empty Formatter" #title of add-on
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Tool"
 
+    #make this panel appear if even 1 object is selected.
     @classmethod
     def poll(cls,context):
         return context.selected_objects
@@ -79,7 +80,6 @@ class PanelClassName(bpy.types.Panel):
         layout.prop(inst,"Size")
         layout.prop(inst,"PropertyName")
         layout.operator("my_operator.my_class_name",text="Apply")
-         ### design your panel here ###
 
 classes = [GroupOfProperties, MyClassName, PanelClassName]
 
