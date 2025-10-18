@@ -1,7 +1,7 @@
 bl_info = {
     "name": "N formatter for empty",
     "author": "Lancine Doumbia",
-    "version": (0, 0, 1), #bug fix, got rid of bpy.context global variable
+    "version": (1, 0, 0), 
     "blender": (2, 8, 0),
     "location": "View3D > Sidebar",
     "description": "Appies display type and size to all selected empties.",
